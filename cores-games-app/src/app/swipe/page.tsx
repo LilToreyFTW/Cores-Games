@@ -7,15 +7,26 @@ import { UserModel } from "@/models/User";
 import { AppShell } from "@/components/shell/app-shell";
 import { SwipeDeck } from "@/components/swipe/swipe-deck";
 
-export default async function SwipePage() {
+export default async function SwipePage({
+  searchParams,
+}: {
+  searchParams?: Promise<{ game?: string }>;
+}) {
   const session = await requireSession();
   await connectToDatabase();
   await ensureDemoUsers();
+  const params = searchParams ? await searchParams : undefined;
+  const selectedGame = params?.game?.trim();
 
   const swipes = await SwipeModel.find({ fromUserId: session.user.id }).lean();
   const excludedIds = [session.user.id, ...swipes.map((swipe) => String(swipe.toUserId))];
   const users = await UserModel.find({
     _id: { $nin: excludedIds },
+    ...(selectedGame
+      ? {
+          favoriteGames: selectedGame,
+        }
+      : {}),
   })
     .limit(12)
     .lean();
@@ -47,6 +58,12 @@ export default async function SwipePage() {
             <p className="mt-2 text-sm text-white/66">use your matches page to move from swipe chemistry to live intros</p>
           </div>
         </div>
+        {selectedGame ? (
+          <div className="glass-panel neon-border rounded-[1.5rem] border border-cyan-400/20 bg-cyan-400/8 p-5">
+            <p className="text-sm text-cyan-100/80">Filtered queue</p>
+            <p className="mt-2 text-2xl font-semibold text-white">Showing players for {selectedGame}</p>
+          </div>
+        ) : null}
         <SwipeDeck initialCandidates={initialCandidates} />
       </div>
     </AppShell>
