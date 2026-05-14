@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cores Games! | Connect. Play. Game.</title>
+    <meta
+      name="description"
+      content="Cores Games! is a premium gaming social platform for swiping, matching, and hopping into instant video chats with players."
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              abyss: "#05010f",
+              neonCyan: "#37f6ff",
+              neonPink: "#ff4fd8",
+              neonPurple: "#8b5cf6",
+              panel: "rgba(12, 8, 28, 0.72)",
+            },
+            boxShadow: {
+              neon: "0 0 30px rgba(55, 246, 255, 0.18), 0 0 60px rgba(255, 79, 216, 0.12)",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="bg-abyss text-white selection:bg-neonPink/40 selection:text-white">
+    <div class="page-shell">
+      <canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+      <header class="sticky top-0 z-50">
+        <nav
+          class="mx-auto mt-4 flex w-[calc(100%-1.5rem)] max-w-7xl items-center justify-between rounded-full border border-white/10 bg-black/35 px-4 py-3 backdrop-blur-xl md:px-6"
+        >
+          <a href="#home" class="logo-mark">
+            <span class="logo-orb"></span>
+            <span>Cores Games!</span>
+          </a>
+
+          <button
+            id="menu-toggle"
+            class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 md:hidden"
+            aria-label="Toggle navigation"
+            aria-expanded="false"
+          >
+            <span class="menu-lines"></span>
+          </button>
+
+          <div
+            id="mobile-menu"
+            class="mobile-menu absolute left-3 right-3 top-[calc(100%+0.75rem)] hidden rounded-3xl border border-white/10 bg-black/80 p-4 backdrop-blur-xl md:static md:flex md:items-center md:gap-6 md:border-0 md:bg-transparent md:p-0 md:backdrop-blur-0"
+          >
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#swipe" class="nav-link">Games</a>
+            <a href="#video-chat" class="nav-link">Video Chat</a>
+            <a href="#swipe" class="nav-link">Swipe Match</a>
+            <a href="#profile" class="nav-link">Profile</a>
+          </div>
+        </nav>
+      </header>
+
+      <main>
+        <section
+          id="home"
+          class="relative mx-auto grid min-h-screen w-[calc(100%-1.5rem)] max-w-7xl items-center gap-12 py-16 md:grid-cols-[1.1fr_0.9fr] md:py-24"
+        >
+          <div class="space-y-8">
+            <div class="inline-flex items-center gap-2 rounded-full border border-neonCyan/30 bg-white/5 px-4 py-2 text-sm text-white/80 backdrop-blur-md">
+              <span class="h-2 w-2 rounded-full bg-neonCyan shadow-[0_0_18px_#37f6ff]"></span>
+              Live matchmaking for gamers, streamers, and squads
+            </div>
+
+            <div class="space-y-5">
+              <p class="eyebrow">Level Up Your Social Lobby</p>
+              <h1 class="hero-title">Cores Games!</h1>
+              <p class="max-w-2xl text-lg leading-8 text-white/75 md:text-xl">
+                Connect. Play. Game. Discover new teammates, jump into instant video
+                chats, and swipe through gamers who match your energy, style, and
+                favorite titles.
+              </p>
+            </div>
+
+            <div class="flex flex-col gap-4 sm:flex-row">
+              <a href="#swipe" class="cta-primary">Start Swiping</a>
+              <a href="#video-chat" class="cta-secondary">Join Video Chat</a>
+            </div>
+
+            <div class="grid gap-4 sm:grid-cols-3">
+              <article class="stat-card">
+                <span class="stat-value">120K+</span>
+                <span class="stat-label">Gamers queued nightly</span>
+              </article>
+              <article class="stat-card">
+                <span class="stat-value">9.4/10</span>
+                <span class="stat-label">Premium social experience</span>
+              </article>
+              <article class="stat-card">
+                <span class="stat-value">Instant</span>
+                <span class="stat-label">Swipe, match, and chat</span>
+              </article>
+            </div>
+          </div>
+
+          <div class="hero-stage">
+            <div class="glow-ring glow-ring-one"></div>
+            <div class="glow-ring glow-ring-two"></div>
+
+            <article class="feature-panel floating-card">
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-xs uppercase tracking-[0.35em] text-neonCyan/80">Featured Match</p>
+                  <h2 class="mt-2 font-['Orbitron'] text-2xl font-bold">NovaHex</h2>
+                </div>
+                <span class="online-pill">Online</span>
+              </div>
+
+              <div class="mt-6 grid gap-4 sm:grid-cols-[0.95fr_1.05fr]">
+                <img
+                  src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=900&q=80"
+                  alt="Gaming setup neon lights"
+                  class="h-60 w-full rounded-[1.75rem] object-cover"
+                />
+                <div class="space-y-4">
+                  <div class="mini-panel">
+                    <p class="mini-label">Main Games</p>
+                    <p class="mini-value">Valorant, Fortnite, Helldivers 2</p>
+                  </div>
+                  <div class="mini-panel">
+                    <p class="mini-label">Looking For</p>
+                    <p class="mini-value">Ranked grinders, creators, late-night duos</p>
+                  </div>
+                  <div class="mini-panel">
+                    <p class="mini-label">Vibe</p>
+                    <p class="mini-value">Hyper social, camera on, zero awkward intros</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="mx-auto w-[calc(100%-1.5rem)] max-w-7xl py-12">
+          <div class="section-frame grid gap-6 lg:grid-cols-3">
+            <article class="info-card">
+              <p class="info-kicker">Smart Matching</p>
+              <h3>Swipe on players, not profiles that feel empty.</h3>
+              <p>
+                Every card highlights favorite games, social energy, and queue style so
+                you can match fast and avoid dead-end invites.
+              </p>
+            </article>
+            <article class="info-card">
+              <p class="info-kicker">Camera-Ready</p>
+              <h3>Go from match to live video in one move.</h3>
+              <p>
+                Jump into instant face-to-face intros with built-in chat, effects, and a
+                slick next-up system for nonstop momentum.
+              </p>
+            </article>
+            <article class="info-card">
+              <p class="info-kicker">Premium Presence</p>
+              <h3>Profiles that feel like gamer identity cards.</h3>
+              <p>
+                Showcase your highlights, preferred genres, voice style, and squad role
+                with a UI built to feel exclusive and high-energy.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section
+          id="swipe"
+          class="mx-auto grid w-[calc(100%-1.5rem)] max-w-7xl gap-10 py-16 lg:grid-cols-[0.85fr_1.15fr]"
+        >
+          <div class="space-y-6">
+            <p class="section-tag">Gamer Swipe</p>
+            <h2 class="section-title">Tinder energy, but built for squads, duos, and clutch teammates.</h2>
+            <p class="section-copy">
+              Swipe right to squad up, left to pass. Each profile is tuned for gaming chemistry:
+              game library, social vibe, competitive level, and streaming style.
+            </p>
+
+            <div class="flex gap-4">
+              <button id="reject-btn" class="action-btn action-btn-reject" type="button">
+                Swipe Left
+              </button>
+              <button id="accept-btn" class="action-btn action-btn-accept" type="button">
+                Swipe Right
+              </button>
+            </div>
+
+            <div class="match-feed section-frame">
+              <div class="flex items-center justify-between">
+                <h3 class="font-['Orbitron'] text-lg font-semibold">Recent Match Feed</h3>
+                <span class="text-sm text-white/55">Live pulse</span>
+              </div>
+              <ul id="match-log" class="mt-4 space-y-3 text-sm text-white/72"></ul>
+            </div>
+          </div>
+
+          <div class="swipe-zone">
+            <div class="swipe-stack" id="swipe-stack" aria-live="polite"></div>
+            <div id="empty-state" class="empty-state hidden">
+              <h3>No more gamers in queue</h3>
+              <p>Refresh the deck to keep matching with new players.</p>
+              <button id="reset-deck-btn" class="cta-primary mt-5" type="button">Reload Players</button>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="video-chat"
+          class="mx-auto grid w-[calc(100%-1.5rem)] max-w-7xl gap-10 py-16 lg:grid-cols-[1.1fr_0.9fr]"
+        >
+          <div class="video-shell">
+            <div class="video-topbar">
+              <div>
+                <p class="section-tag !mb-2">Random Video Chat</p>
+                <h2 class="section-title !text-3xl md:!text-4xl">Meet gamers instantly, then jump to the next vibe.</h2>
+              </div>
+              <button id="next-chat-btn" class="cta-secondary" type="button">Next Player</button>
+            </div>
+
+            <div class="video-grid">
+              <article class="video-card primary-video">
+                <img
+                  id="remote-video-image"
+                  src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=900&q=80"
+                  alt="Remote gamer placeholder"
+                />
+                <div class="video-overlay">
+                  <div>
+                    <p class="video-name" id="remote-video-name">AstraVibe</p>
+                    <p class="video-meta" id="remote-video-meta">Warzone duo hunter - camera on</p>
+                  </div>
+                  <span class="online-pill">Live</span>
+                </div>
+              </article>
+
+              <article class="video-card self-video">
+                <div class="self-video-inner">
+                  <div class="avatar-aura"></div>
+                  <p class="text-sm uppercase tracking-[0.35em] text-white/55">You</p>
+                  <p class="mt-2 font-['Orbitron'] text-2xl font-bold">CorePlayer</p>
+                  <p class="mt-2 text-sm text-white/65">Mic on - Neon filter - Ready to queue</p>
+                </div>
+              </article>
+            </div>
+
+            <div class="chat-panel">
+              <div id="chat-messages" class="chat-messages"></div>
+              <form id="chat-form" class="chat-form">
+                <input
+                  id="chat-input"
+                  type="text"
+                  placeholder="Say hi, ask their mains, or drop your Discord..."
+                  class="chat-input"
+                />
+                <button class="cta-primary !px-5 !py-3" type="submit">Send</button>
+              </form>
+            </div>
+          </div>
+
+          <aside id="profile" class="space-y-6">
+            <article class="section-frame">
+              <p class="section-tag">Profile Pulse</p>
+              <h3 class="font-['Orbitron'] text-2xl font-bold">Build a gamer identity that pops.</h3>
+              <p class="mt-4 text-white/70">
+                Highlight your mains, preferred roles, stream style, and whether you want
+                chill co-op or locked-in ranked sessions.
+              </p>
+            </article>
+
+            <article class="profile-card">
+              <div class="flex items-center gap-4">
+                <img
+                  src="assets/avatar-placeholder.svg"
+                  alt="Cores Games profile placeholder"
+                  class="h-20 w-20 rounded-3xl border border-white/10 bg-white/5 p-2"
+                />
+                <div>
+                  <p class="font-['Orbitron'] text-2xl font-bold">CorePlayer</p>
+                  <p class="text-white/60">FPS flex - Late-night party chat - West Coast</p>
+                </div>
+              </div>
+              <div class="mt-6 grid gap-3 sm:grid-cols-2">
+                <div class="mini-panel">
+                  <p class="mini-label">Top Genres</p>
+                  <p class="mini-value">FPS, RPG, Party Games</p>
+                </div>
+                <div class="mini-panel">
+                  <p class="mini-label">Favorite Stack</p>
+                  <p class="mini-value">Duos and full squad chaos</p>
+                </div>
+                <div class="mini-panel">
+                  <p class="mini-label">Best Times</p>
+                  <p class="mini-value">8PM to 1AM PST</p>
+                </div>
+                <div class="mini-panel">
+                  <p class="mini-label">Profile Boost</p>
+                  <p class="mini-value">Neon spotlight enabled</p>
+                </div>
+              </div>
+            </article>
+          </aside>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
