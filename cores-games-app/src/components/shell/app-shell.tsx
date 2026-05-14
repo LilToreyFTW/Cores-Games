@@ -1,12 +1,17 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Session } from "next-auth";
-import { Menu, Radio, Sparkles, Users, Video } from "lucide-react";
+import { Gamepad2, Menu, Radio, Sparkles, Users, Video } from "lucide-react";
 import { SignOutButton } from "@/components/auth/sign-out-button";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { cn } from "@/lib/utils";
 
 const navItems = [
   { href: "/", label: "Home", icon: Sparkles },
+  { href: "/games", label: "Games", icon: Gamepad2 },
   { href: "/swipe", label: "Swipe", icon: Users },
   { href: "/matches", label: "Matches", icon: Radio },
   { href: "/video-chat", label: "Video Chat", icon: Video },
@@ -14,13 +19,20 @@ const navItems = [
 ];
 
 function NavLinks() {
+  const pathname = usePathname();
+
   return (
     <>
       {navItems.map((item) => (
         <Link
           key={item.href}
           href={item.href}
-          className="rounded-full px-4 py-2 text-sm text-white/72 transition hover:bg-white/8 hover:text-white"
+          className={cn(
+            "rounded-full px-4 py-2 text-sm transition hover:bg-white/8 hover:text-white",
+            pathname === item.href
+              ? "bg-white/10 text-white"
+              : "text-white/72"
+          )}
         >
           {item.label}
         </Link>

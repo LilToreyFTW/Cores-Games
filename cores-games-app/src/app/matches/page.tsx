@@ -42,6 +42,20 @@ export default async function MatchesPage() {
           <p className="font-mono text-sm tracking-[0.35em] text-cyan-200">MUTUAL MATCHES</p>
           <h1 className="mt-3 text-4xl font-semibold text-white">Every right swipe that came back your way.</h1>
         </div>
+        <div className="grid gap-4 md:grid-cols-3">
+          <div className="glass-panel neon-border rounded-[1.5rem] border border-white/10 bg-white/5 p-5">
+            <p className="text-sm text-white/55">Total matches</p>
+            <p className="mt-3 text-3xl font-semibold text-white">{matches.length}</p>
+          </div>
+          <div className="glass-panel neon-border rounded-[1.5rem] border border-white/10 bg-white/5 p-5">
+            <p className="text-sm text-white/55">Best use</p>
+            <p className="mt-3 text-xl font-semibold text-white">Open a squad chat or jump to random video</p>
+          </div>
+          <div className="glass-panel neon-border rounded-[1.5rem] border border-white/10 bg-white/5 p-5">
+            <p className="text-sm text-white/55">Page role</p>
+            <p className="mt-3 text-xl font-semibold text-white">This tab is now its own roster view</p>
+          </div>
+        </div>
         <MatchesList matches={matches} currentUserId={session.user.id} />
       </div>
     </AppShell>

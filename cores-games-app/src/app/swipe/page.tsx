@@ -29,7 +29,24 @@ export default async function SwipePage() {
 
   return (
     <AppShell session={session}>
-      <div className="mx-auto max-w-7xl px-4 py-12 md:px-6">
+      <div className="mx-auto max-w-7xl space-y-8 px-4 py-12 md:px-6">
+        <div className="grid gap-4 md:grid-cols-3">
+          <div className="glass-panel neon-border rounded-[1.5rem] border border-white/10 bg-white/5 p-5">
+            <p className="text-sm text-white/55">Deck status</p>
+            <p className="mt-3 text-3xl font-semibold text-white">{initialCandidates.length}</p>
+            <p className="mt-2 text-sm text-white/66">players waiting in your current swipe queue</p>
+          </div>
+          <div className="glass-panel neon-border rounded-[1.5rem] border border-white/10 bg-white/5 p-5">
+            <p className="text-sm text-white/55">Intent</p>
+            <p className="mt-3 text-3xl font-semibold text-white">Real Match</p>
+            <p className="mt-2 text-sm text-white/66">likes persist to Mongo and can create mutual matches instantly</p>
+          </div>
+          <div className="glass-panel neon-border rounded-[1.5rem] border border-white/10 bg-white/5 p-5">
+            <p className="text-sm text-white/55">Next step</p>
+            <p className="mt-3 text-3xl font-semibold text-white">Video Chat</p>
+            <p className="mt-2 text-sm text-white/66">use your matches page to move from swipe chemistry to live intros</p>
+          </div>
+        </div>
         <SwipeDeck initialCandidates={initialCandidates} />
       </div>
     </AppShell>
