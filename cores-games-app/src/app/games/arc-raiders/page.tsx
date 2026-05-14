@@ -32,6 +32,12 @@ export default async function ArcRaidersPage() {
                 Swipe ARC Raiders players
               </Link>
               <Link
+                href="/games/arc-raiders/maps"
+                className="rounded-full border border-pink-400/25 bg-pink-400/10 px-4 py-2 text-sm text-pink-100 transition hover:bg-pink-400/15"
+              >
+                Open map control room
+              </Link>
+              <Link
                 href={game.officialSite}
                 className="rounded-full border border-white/10 bg-white/8 px-4 py-2 text-sm text-white transition hover:bg-white/12"
               >

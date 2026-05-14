@@ -19,6 +19,16 @@ export type GameCatalogEntry = {
   latestNews: GameNewsItem[];
 };
 
+export type ArcRaidersMapEntry = {
+  slug: string;
+  name: string;
+  region: string;
+  recommendedLevel: string;
+  description: string;
+  metaforgeUrl: string;
+  mapgenieUrl: string;
+};
+
 export const gameCatalog: GameCatalogEntry[] = [
   {
     slug: "arc-raiders",
@@ -120,3 +130,66 @@ export const gameCatalog: GameCatalogEntry[] = [
 export function findGameBySlug(slug: string) {
   return gameCatalog.find((game) => game.slug === slug);
 }
+
+export const arcRaidersMaps: ArcRaidersMapEntry[] = [
+  {
+    slug: "dam",
+    name: "Dam Battlegrounds",
+    region: "Starter zone",
+    recommendedLevel: "Early queue",
+    description:
+      "A contested industrial stronghold with layered loot routes, event pressure, and solid early-run extraction planning.",
+    metaforgeUrl: "https://metaforge.app/arc-raiders/map/dam",
+    mapgenieUrl: "https://mapgenie.io/arc-raiders/maps/arc-raiders",
+  },
+  {
+    slug: "spaceport",
+    name: "The Spaceport",
+    region: "High-mobility zone",
+    recommendedLevel: "Mid to advanced",
+    description:
+      "Vertical combat, launch structures, and split route planning across surface and tunnel layers.",
+    metaforgeUrl: "https://metaforge.app/arc-raiders/map/spaceport",
+    mapgenieUrl: "https://mapgenie.io/arc-raiders/maps/arc-raiders",
+  },
+  {
+    slug: "buried-city",
+    name: "Buried City",
+    region: "Desert ruins",
+    recommendedLevel: "Mid queue",
+    description:
+      "Dense urban remnants in the dunes with residential loot patterns, rooftop danger, and close-quarters rotations.",
+    metaforgeUrl: "https://metaforge.app/arc-raiders/map/buried-city",
+    mapgenieUrl: "https://mapgenie.io/arc-raiders/maps/arc-raiders",
+  },
+  {
+    slug: "blue-gate",
+    name: "Blue Gate",
+    region: "Advanced sector",
+    recommendedLevel: "Advanced queue",
+    description:
+      "A harder zone with security-heavy routing, keycard value, and riskier extract decision-making.",
+    metaforgeUrl: "https://metaforge.app/arc-raiders/map/blue-gate",
+    mapgenieUrl: "https://mapgenie.io/arc-raiders/maps/arc-raiders",
+  },
+  {
+    slug: "stella-montis",
+    name: "Stella Montis",
+    region: "Mountain endgame",
+    recommendedLevel: "Endgame queue",
+    description:
+      "A colder, tougher endgame space built around indoor pressure, high-tier farming, and punishing late fights.",
+    metaforgeUrl: "https://metaforge.app/arc-raiders/map/stella-montis",
+    mapgenieUrl: "https://mapgenie.io/arc-raiders/maps/arc-raiders",
+  },
+  {
+    slug: "riven-tides",
+    name: "Riven Tides",
+    region: "Newest coastal biome",
+    recommendedLevel: "Current hot zone",
+    description:
+      "The newest ARC Raiders map with beach lines, coastal structures, active patrols, and fresh event routing.",
+    metaforgeUrl: "https://metaforge.app/arc-raiders/map/riven-tides",
+    mapgenieUrl: "https://mapgenie.io/arc-raiders/maps/arc-raiders",
+  },
+];
