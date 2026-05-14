@@ -6,6 +6,7 @@ import { SignUpForm } from "@/components/auth/sign-up-form";
 
 export default async function SignUpPage() {
   const session = await getServerSession(authOptions);
+  const googleEnabled = Boolean(process.env.AUTH_GOOGLE_ID && process.env.AUTH_GOOGLE_SECRET);
   if (session?.user) {
     redirect("/swipe");
   }
@@ -26,7 +27,7 @@ export default async function SignUpPage() {
             </Link>
           </p>
         </div>
-        <SignUpForm />
+        <SignUpForm googleEnabled={googleEnabled} />
       </div>
     </div>
   );

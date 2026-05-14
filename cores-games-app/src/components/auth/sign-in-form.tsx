@@ -19,7 +19,7 @@ const signInSchema = z.object({
 
 type SignInFormValues = z.infer<typeof signInSchema>;
 
-export function SignInForm() {
+export function SignInForm({ googleEnabled }: { googleEnabled: boolean }) {
   const router = useRouter();
   const [error, setError] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
@@ -74,13 +74,20 @@ export function SignInForm() {
             {pending ? "Entering queue..." : "Sign In"}
           </Button>
         </form>
-        <Button
-          variant="outline"
-          className="w-full border-white/12 bg-white/5 text-white"
-          onClick={() => signIn("google", { callbackUrl: "/swipe" })}
-        >
-          Continue with Google
-        </Button>
+        {googleEnabled ? (
+          <Button
+            type="button"
+            variant="outline"
+            className="w-full border-white/12 bg-white/5 text-white"
+            onClick={() => signIn("google", { callbackUrl: "/swipe" })}
+          >
+            Continue with Google
+          </Button>
+        ) : (
+          <p className="text-center text-sm text-white/50">
+            Google sign-in will appear here once production Google OAuth is connected.
+          </p>
+        )}
       </CardContent>
     </Card>
   );

@@ -6,6 +6,7 @@ import { SignInForm } from "@/components/auth/sign-in-form";
 
 export default async function SignInPage() {
   const session = await getServerSession(authOptions);
+  const googleEnabled = Boolean(process.env.AUTH_GOOGLE_ID && process.env.AUTH_GOOGLE_SECRET);
   if (session?.user) {
     redirect("/swipe");
   }
@@ -17,7 +18,7 @@ export default async function SignInPage() {
           <p className="font-mono text-sm tracking-[0.35em] text-cyan-200">WELCOME BACK</p>
           <h1 className="text-5xl font-semibold text-white">Step back into the queue.</h1>
           <p className="max-w-lg text-white/68">
-            Sign in with credentials or Google to access swiping, real matches, and random video chat.
+            Sign in with credentials{googleEnabled ? " or Google" : ""} to access swiping, real matches, and random video chat.
           </p>
           <p className="text-sm text-white/56">
             Need an account?{" "}
@@ -26,7 +27,7 @@ export default async function SignInPage() {
             </Link>
           </p>
         </div>
-        <SignInForm />
+        <SignInForm googleEnabled={googleEnabled} />
       </div>
     </div>
   );

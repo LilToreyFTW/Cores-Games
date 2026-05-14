@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -23,7 +24,7 @@ type RegisterValues = {
   bio: string;
 };
 
-export function SignUpForm() {
+export function SignUpForm({ googleEnabled }: { googleEnabled: boolean }) {
   const router = useRouter();
   const [error, setError] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
@@ -127,6 +128,20 @@ export function SignUpForm() {
             </Button>
           </div>
         </form>
+        {googleEnabled ? (
+          <Button
+            type="button"
+            variant="outline"
+            className="w-full border-white/12 bg-white/5 text-white"
+            onClick={() => signIn("google", { callbackUrl: "/swipe" })}
+          >
+            Continue with Google
+          </Button>
+        ) : (
+          <p className="text-center text-sm text-white/50">
+            Google sign-up will appear here once production Google OAuth is connected.
+          </p>
+        )}
       </CardContent>
     </Card>
   );
